@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "80:${PORT}"
+    volumes:
+      - .:/home/app
+      - /home/app/node_modules  
