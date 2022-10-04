@@ -1,4 +1,4 @@
-# LimitRange for Pod or Container
+# # LimitRange for Pod or Container
 apiVersion: v1
 kind: LimitRange
 metadata:
@@ -17,9 +17,6 @@ spec:
     max:
       cpu: 200m
       memory: 512Mi
-    min:
-      cpu: 100m
-      memory: 256Mi
 ---
 # LimitRange for PersistentVolumeClaim
 apiVersion: v1

@@ -71,7 +71,7 @@ spec:
   selector:
     matchLabels:
       app: nginx
-  replicas: 0
+  replicas: 1
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -91,7 +91,6 @@ spec:
                   operator: In
                   values:
                   - "true"
-
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
             - weight: 2
@@ -103,6 +102,11 @@ spec:
                       values:
                         - "nginx"
                 topologyKey: kubernetes.io/hostname
+      tolerations:
+      - key: "reserved"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
 
       containers:
         - name: nginx

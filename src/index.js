@@ -1,7 +1,5 @@
 require('newrelic');
 const logger = require('new-relic-logs')
-
-
 require("dotenv").config();
 const moment = require("moment");
 const path = require("path");
@@ -35,6 +33,7 @@ const routes = require("./routes");
 app.use(routes);
 app.on('pronto', () => {
   app.listen(process.env.PORT, () => {
-    console.log("App listen on port: ", process.env.PORT);
+    console.log("Calculadora de IMC executando na porta: ", process.env.PORT);
+    logger.info("Calculadora de IMC executando na porta: ", process.env.PORT)
   });
 });

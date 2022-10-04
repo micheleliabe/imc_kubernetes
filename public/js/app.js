@@ -96,6 +96,7 @@ buttonElementCalc.onclick = async function calc() {
 };
 
 
+
 //Faz a requisição para a API, recebe o resultado e o exibe para o usuário
 async function realizaCalculo(nome, altura, peso){
      let response = await fetch(
@@ -146,7 +147,6 @@ async function realizaCalculo(nome, altura, peso){
     }
 }
 
-
 buttonElementClear = document.querySelector("#clear");
 buttonElementClear.onclick = function clear() {
     document.querySelector("#resultado").style.display = "none";
@@ -157,3 +157,7 @@ buttonElementClear.onclick = function clear() {
     document.querySelector("#imgLogo").src = "/imgs/weight-loss.svg";
     document.getElementById("btnCalc").setAttribute("disabled", "disabled")
 };
+
+
+
+

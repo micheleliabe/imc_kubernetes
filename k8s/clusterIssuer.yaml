@@ -1,0 +1,81 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-homolog
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: micheldias.cloud@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-homolog
+    solvers:
+    - http01: 
+        ingress:
+          class: nginx
+
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: micheldias.cloud@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    - http01: 
+        ingress:
+          class: nginx
+
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: alertmanager-letsencrypt-prod
+  namespace: observability
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: micheldias.cloud@gmail.com
+    privateKeySecretRef:
+      name: alertmanager-letsencrypt-prod
+    solvers:
+    - http01: 
+        ingress:
+          class: nginx
+
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: grafana-letsencrypt-prod
+  namespace: observability
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: micheldias.cloud@gmail.com
+    privateKeySecretRef:
+      name: grafana-letsencrypt-prod
+    solvers:
+    - http01: 
+        ingress:
+          class: nginx
+
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: prometheus-letsencrypt-prod
+  namespace: observability
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: micheldias.cloud@gmail.com
+    privateKeySecretRef:
+      name: prometheus-letsencrypt-prod
+    solvers:
+    - http01: 
+        ingress:
+          class: nginx

@@ -23,11 +23,9 @@ route.get("/healthz", (req, res) => {
 route.get("/calculo", async (req, res) => {
   logger.info("Requisição em /calc");
   let resultado = parseFloat((req.query.peso / (req.query.altura * req.query.altura)).toFixed(1))
-  logger.info("Nome: " + req.query.nome, " Peso: " + req.query.peso + " Altura: " + req.query.altura + " IMC: " + resultado)
-  
   const pessoa = new Pessoa(  {nome: req.query.nome, peso: req.query.peso, altura: req.query.altura, imc: resultado})
   const response = await pessoa.register()
-  
+  logger.info("Novo registro adicionado: ", JSON.stringify({nome: req.query.nome, peso: req.query.peso, altura: req.query.altura, imc: resultado}))
   res.status(200).send({
     status: 200,
     message: resultado,
@@ -39,6 +37,7 @@ route.get("/calculo", async (req, res) => {
 route.get("/list", async (req, res) => {
   const pessoa = new Pessoa()
   const response = await pessoa.list()
+  logger.info("Requisição realizada em /list ", JSON.stringify(response))
   res.status(200).send({
     status: 200,
     message: response,

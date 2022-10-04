@@ -12,6 +12,4 @@ spec:
     targetPort: 3000
   selector:
     app: app
-  type: LoadBalancer
-status:
-  loadBalancer: {}
+  type: ClusterIP
