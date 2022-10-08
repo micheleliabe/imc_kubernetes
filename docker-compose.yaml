@@ -6,4 +6,4 @@ services:
       - "80:${PORT}"
     volumes:
       - .:/home/app
-      - /home/app/node_modules  
+      - /home/app/node_modules

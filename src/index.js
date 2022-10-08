@@ -9,6 +9,17 @@ const ejs = require("ejs");
 const morgan = require('morgan')
 const mongoose = require('mongoose');
 
+
+
+const client = require('prom-client');
+const collectDefaultMetrics = client.collectDefaultMetrics;
+const Registry = client.Registry;
+const register = new Registry();
+collectDefaultMetrics({ register });
+
+const apiMetrics = require('prometheus-api-metrics');
+app.use(apiMetrics());
+
 app.use(morgan('combined'))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -27,7 +38,7 @@ mongoose.connect(process.env.CONNECTIONSTRING, {
   .then(() => {
     app.emit('pronto');
   })
-  .catch(e => logger.info(e));
+  .catch(e => console.error(e));
 
 const routes = require("./routes");
 app.use(routes);

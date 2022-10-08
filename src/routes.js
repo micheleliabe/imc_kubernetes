@@ -4,6 +4,7 @@ const moment = require("moment");
 const Pessoa = require("./models/pessoa.model")
 const logger = require('new-relic-logs')
 
+
 //Página inicial
 route.get("/", (req, res) => {
   res.render("index");
@@ -45,5 +46,10 @@ route.get("/list", async (req, res) => {
   });
 });
 
+
+route.get('/metrics', async (req, res) => {
+  res.setHeader('Content-Type', register.contentType);
+  res.send(await register.metrics());
+});
 
 module.exports = route;

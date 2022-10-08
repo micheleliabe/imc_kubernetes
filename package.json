@@ -20,7 +20,8 @@
     "morgan": "^1.10.0",
     "new-relic-logs": "^1.0.33",
     "newrelic": "^9.0.3",
-    "prom-client": "^14.1.0"
+    "prom-client": "^14.1.0",
+    "prometheus-api-metrics": "^3.2.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.19",

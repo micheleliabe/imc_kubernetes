@@ -5,12 +5,12 @@ metadata:
   namespace: app
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: "imc-letsencrypt-prod"
 spec:
   tls:
   - hosts:
     - "imc.kubernetes.micheldias.com"
-    secretName: "api-imc-tls" 
+    secretName: "imc-letsencrypt-prod" 
   rules:
   - host: imc.kubernetes.micheldias.com
     http:
